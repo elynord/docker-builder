@@ -20,7 +20,7 @@ jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -46,7 +46,7 @@ jobs:
             dockerfile: Dockerfile
             context: . # Specify the build context if not the root directory
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build and Tag Image (${{ matrix.target }})
         run: |
           docker build \
@@ -71,7 +71,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment: production
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Log in to Container Registry
         run: echo "${{ secrets.CONTAINER_REGISTRY_TOKEN }}" | docker login your-registry.com --username ${{ secrets.CONTAINER_REGISTRY_USERNAME }} --password-stdin
       - name: Push Images to Registry
