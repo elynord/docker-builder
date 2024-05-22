@@ -1,0 +1,37 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+    # ignore:
+    #   - dependency-name: "actions/checkout" # Abaikan pembaruan untuk actions/checkout
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-name: "python"
+      - dependency-name: "node"
+      - dependency-name: "postgres"
+      - dependency-name: "nginx"
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # allow:
+    #   - dependency-name: "django"
+    #   - dependency-name: "flask"
+
+  - package-ecosystem: "npm"
+    directory: "frontend/" # Sesuaikan dengan direktori proyek frontend Anda
+    schedule:
+      interval: "weekly"
+    # allow:
+    #   - dependency-name: "react"
+    #   - dependency-name: "vue"
